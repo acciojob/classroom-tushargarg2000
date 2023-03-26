@@ -46,7 +46,7 @@ public class StudentRepository {
             if(Entry.getValue().equals(teacher)){
 
                 String student = Entry.getKey();
-                studentDb.remove(teacher);
+                studentDb.remove(student);
                 studentTeacherPair.remove(teacher);              // key : Student ,value : Teachergit
             }
         }
@@ -65,7 +65,7 @@ public class StudentRepository {
                 if(Entry.getValue().equals(teacher)){
 
                     String student = Entry.getKey();
-                    studentDb.remove(teacher);
+                    studentDb.remove(student);
                     studentTeacherPair.remove(teacher);
                 }
             }
@@ -74,32 +74,25 @@ public class StudentRepository {
     }
 
     public Student getStudentByName(String name){
-
         return studentDb.get(name);
     }
 
     public Teacher getTeacherByName(String name){
-
         return teacherDb.get(name);
     }
 
     public List<String> getStudentsByTeacherName(String teacher){
 
         List<String> students = new ArrayList<>();
-
         for(Map.Entry<String,String> entry : studentTeacherPair.entrySet()){
-
             String student = entry.getKey();
             String teacher1 = entry.getValue();
 
             if(teacher1.equals(teacher)){
                 students.add(student);
             }
-
         }
         return students;
-
-
     }
 
     public List<String> getAllStudents(){
@@ -111,5 +104,4 @@ public class StudentRepository {
         }
         return students;
     }
-
 }
