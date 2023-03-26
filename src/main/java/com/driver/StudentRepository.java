@@ -35,6 +35,10 @@ public class StudentRepository {
 
         List<String> students = teacherStudent.get(teacher);
 
+        if(students==null){
+            students = new ArrayList<>();
+        }
+
         students.add(student);
 
         teacherStudent.put(teacher,students);
@@ -79,10 +83,7 @@ public class StudentRepository {
     }
 
     public List<String> getStudentsByTeacherName(String teacher){
-
-
         return teacherStudent.get(teacher);
-
     }
 
     public List<String> getAllStudents(){
