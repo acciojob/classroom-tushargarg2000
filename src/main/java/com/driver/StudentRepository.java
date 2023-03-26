@@ -2,6 +2,7 @@ package com.driver;
 
 import org.springframework.stereotype.Repository;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -84,14 +85,31 @@ public class StudentRepository {
 
     public List<String> getStudentsByTeacherName(String teacher){
 
-        List<String> list = (List<String>) teacherDb.get(teacher);
-        return list;
+        List<String> students = new ArrayList<>();
+
+        for(Map.Entry<String,String> entry : studentTeacherPair.entrySet()){
+
+            String student = entry.getKey();
+            String teacher1 = entry.getValue();
+
+            if(teacher1.equals(teacher)){
+                students.add(student);
+            }
+
+        }
+        return students;
+
+
     }
 
     public List<String> getAllStudents(){
 
-        List<String> list = (List<String>) studentDb.keySet();
-        return list;
+        List<String> students = new ArrayList<>();
+
+        for(String s : studentDb.keySet()){
+            students.add(s);
+        }
+        return students;
     }
 
 }
